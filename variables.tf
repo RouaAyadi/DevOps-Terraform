@@ -3,7 +3,7 @@ variable "db_user" {
 }
 
 variable "db_password" {
-  type=string
+    default = "password"
 }
 
 variable "db_name" {
