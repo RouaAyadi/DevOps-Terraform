@@ -1,0 +1,31 @@
+name: Terraform CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # 3. Terraform Init
+      - name: Terraform Init
+        run: terraform init
+
+      # 4. Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan
+
+      # 5. Terraform Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve

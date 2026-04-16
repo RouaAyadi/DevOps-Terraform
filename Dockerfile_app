@@ -1,0 +1,16 @@
+FROM alpine:latest
+
+# Installer nginx
+RUN apk add --no-cache nginx
+
+# Créer le dossier nécessaire
+RUN mkdir -p /run/nginx
+
+# Créer la page HTML
+RUN echo "<h1>Application Deployed via Terraform IaC!</h1>" > /var/lib/nginx/html/index.html
+
+# Exposer le port 80
+EXPOSE 80
+
+# Lancer nginx
+CMD ["nginx", "-g", "daemon off;"]
