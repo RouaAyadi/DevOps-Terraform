@@ -9,6 +9,10 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    env:
+      TF_IN_AUTOMATION: true
+      TF_VAR_db_password: ${{ secrets.db_password }}
+
     steps:
       # 1. Checkout code
       - name: Checkout repository
